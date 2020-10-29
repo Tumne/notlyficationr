@@ -1,0 +1,5 @@
+export enum TYPE {
+  ADD_NOTE = 'ADD_NOTE',
+  RESET_NOTES = 'RESET_NOTES',
+  DELETE_NOTE = 'DELETE_NOTE',
+}
