@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { TYPE } from '../../state/constants';
 import { NoteContext } from '../../state/noteContext';
-import { Button } from '../common';
+import { Button, Input } from '../common';
 
 interface Props {
   id: string;
@@ -10,11 +10,25 @@ interface Props {
 
 export const EditDeleteNote: React.FC<Props> = ({ id, text }) => {
   const { dispatch } = useContext(NoteContext);
+  const [toggle, setToggle] = useState(false);
+  const [newText, setNewText] = useState(text);
 
   return (
     <li key={id}>
-      {text}
-      <Button>Edit</Button>
+      {toggle ? (
+        <Input value={newText} onChange={(e) => setNewText(e.target.value)} />
+      ) : (
+        text
+      )}
+      <Button
+        onClick={() => {
+          if (toggle) {
+          }
+          setToggle(!toggle);
+        }}
+      >
+        {toggle ? 'Save' : 'Edit'}
+      </Button>
       <Button
         onClick={() => {
           dispatch({ type: TYPE.DELETE_NOTE, payload: id });
