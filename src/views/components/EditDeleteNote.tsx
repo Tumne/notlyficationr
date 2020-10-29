@@ -23,6 +23,7 @@ export const EditDeleteNote: React.FC<Props> = ({ id, text }) => {
       <Button
         onClick={() => {
           if (toggle) {
+            dispatch({ type: TYPE.EDIT_NOTE, payload: { id, text: newText } });
           }
           setToggle(!toggle);
         }}

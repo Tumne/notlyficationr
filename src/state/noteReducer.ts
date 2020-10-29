@@ -13,6 +13,17 @@ const reducer = (state: IState, action: IAction) => {
         ...state,
         notes: [...state.notes, ...(action.payload as INote[])],
       };
+    case TYPE.EDIT_NOTE:
+      const editedNotes = state.notes.map((note) =>
+        note.id === (action.payload as INote).id
+          ? { ...note, ...(action.payload as INote) }
+          : note
+      );
+
+      return {
+        ...state,
+        notes: editedNotes,
+      };
     case TYPE.DELETE_NOTE:
       const newNotes = state.notes.filter((note) => note.id !== action.payload);
       if (!newNotes.length) {
