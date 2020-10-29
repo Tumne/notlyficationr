@@ -30,10 +30,10 @@ interface INoteProvider {
 }
 
 const NoteProvider = ({ children }: INoteProvider) => {
-  const notesLS = localStorageUtil.get(LSKey.NOTES);
+  const LSNotes = localStorageUtil.get(LSKey.NOTES);
   const [state, dispatch] = useReducer(
     reducer,
-    notesLS ? { notes: notesLS } : initialState
+    LSNotes ? { notes: LSNotes } : initialState
   );
 
   useEffect(() => {

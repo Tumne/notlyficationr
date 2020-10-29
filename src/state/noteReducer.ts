@@ -19,7 +19,6 @@ const reducer = (state: IState, action: IAction) => {
           ? { ...note, ...(action.payload as INote) }
           : note
       );
-
       return {
         ...state,
         notes: editedNotes,
