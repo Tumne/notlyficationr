@@ -23,7 +23,7 @@ const AddNote = () => {
     >
       <Input value={text} onChange={(e) => setText(e.target.value)} />
       <Button type="submit" disabled={!text}>
-        Add Note
+        +
       </Button>
       <Button
         type="button"
@@ -32,7 +32,7 @@ const AddNote = () => {
           dispatch({ type: TYPE.RESET_NOTES });
         }}
       >
-        Clear All
+        Reset
       </Button>
     </Form>
   );

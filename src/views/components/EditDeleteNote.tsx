@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { TYPE } from '../../state/constants';
 import { NoteContext } from '../../state/noteContext';
-import { Button, Form, Input } from '../common';
+import { Button, Input } from '../common';
 
 interface Props {
   id: string;
@@ -15,21 +15,47 @@ export const EditDeleteNote: React.FC<Props> = ({ id, text }) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (toggle) {
+    if (text !== newText) {
       dispatch({ type: TYPE.EDIT_NOTE, payload: { id, text: newText } });
     }
-    setToggle(!toggle);
+    setToggle(false);
   };
+
+  const handleReset = () => {
+    setNewText(text);
+    setToggle(false);
+  };
+
   return (
-    <Form onSubmit={handleSubmit}>
+    <div>
       {toggle ? (
-        <Input value={newText} onChange={(e) => setNewText(e.target.value)} />
+        <>
+          <Input
+            value={newText}
+            onChange={(e) => setNewText(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleSubmit(e);
+              } else if (e.key === 'Escape') {
+                handleReset();
+              }
+            }}
+          />
+          <Button type="button" onClick={handleSubmit}>
+            Save
+          </Button>
+          <Button type="button" onClick={handleReset}>
+            Cancel
+          </Button>
+        </>
       ) : (
-        text
+        <>
+          {text}
+          <Button type="button" onClick={() => setToggle(true)}>
+            Edit
+          </Button>
+        </>
       )}
-      <Button type="button" onClick={handleSubmit}>
-        {toggle ? 'Save' : 'Edit'}
-      </Button>
       <Button
         type="button"
         onClick={() => {
@@ -38,6 +64,6 @@ export const EditDeleteNote: React.FC<Props> = ({ id, text }) => {
       >
         x
       </Button>
-    </Form>
+    </div>
   );
 };
