@@ -15,10 +15,14 @@ export const EditDeleteNote: React.FC<Props> = ({ id, text }) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (text !== newText) {
-      dispatch({ type: TYPE.EDIT_NOTE, payload: { id, text: newText } });
+    if (newText) {
+      if (text !== newText) {
+        dispatch({ type: TYPE.EDIT_NOTE, payload: { id, text: newText } });
+      }
+      setToggle(false);
+    } else {
+      handleReset();
     }
-    setToggle(false);
   };
 
   const handleReset = () => {
