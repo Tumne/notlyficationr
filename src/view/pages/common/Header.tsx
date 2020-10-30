@@ -6,7 +6,7 @@ import { NoteContext } from '../../../state/context';
 import LogoSrc from '../../assets/logo.png';
 import { Button } from '../../common';
 
-const Header = styled.div`
+const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
@@ -46,46 +46,50 @@ const ButtonContainer = styled.div`
   right: 0;
 `;
 
-const Wrapper: React.FC<{}> = () => {
+const Header: React.FC<{}> = () => {
   const {
-    state: { notes, selectedNote },
+    state: { notes, isNotesOpen },
     dispatch,
   } = useContext(NoteContext);
 
   return (
-    <Header>
+    <Container>
       <Img src={LogoSrc} />
       <Title>Notlyficationr</Title>
       <ButtonContainer>
         {notes.length ? (
-          <Button
-            type="button"
-            onClick={() => {
-              dispatch({ type: TYPE.RESET_NOTES });
-            }}
-            data-tip
-            data-for="deleteAllNotes"
-          >
-            Reset
-          </Button>
+          <>
+            <Button
+              type="button"
+              onClick={() => {
+                dispatch({ type: TYPE.RESET_NOTES });
+              }}
+              data-tip
+              data-for="deleteAllNotes"
+            >
+              Reset
+            </Button>
+            <ReactTooltip
+              type="error"
+              id="deleteAllNotes"
+              place="bottom"
+              effect="solid"
+            >
+              <h3>Warning: Deletes all notes</h3>
+            </ReactTooltip>
+          </>
         ) : null}
         <AddNote
-          disabled={!selectedNote}
-          onClick={() => dispatch({ type: TYPE.UNSET_SELECTED_NOTE })}
+          disabled={isNotesOpen}
+          onClick={() => {
+            dispatch({ type: TYPE.UNSET_SELECTED_NOTE, payload: '' });
+          }}
         >
           Add Note
         </AddNote>
-        <ReactTooltip
-          type="error"
-          id="deleteAllNotes"
-          place="bottom"
-          effect="solid"
-        >
-          <h3>Warning: Deletes all notes</h3>
-        </ReactTooltip>
       </ButtonContainer>
-    </Header>
+    </Container>
   );
 };
 
-export default Wrapper;
+export default Header;

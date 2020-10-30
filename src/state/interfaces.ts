@@ -9,9 +9,10 @@ export interface INote {
 export interface IState {
   notes: INote[];
   selectedNote: INote | null;
+  isNotesOpen: boolean;
 }
 
 export interface IAction {
   type: TYPE;
-  payload?: INote[] | INote | string;
+  payload?: INote | string;
 }

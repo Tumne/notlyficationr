@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Button = styled.button`
   background: white;
   font-size: 1em;
-  margin-right: 0.75em;
+  margin: 0.5em;
   padding: 0.25em 1em;
   cursor: pointer;
   border: 1px solid black;
@@ -12,6 +12,7 @@ const Button = styled.button`
 
   :disabled {
     border-color: #b7b7b7;
+    cursor: default;
   }
   :not(:disabled):hover {
     background-color: #f5f5f5;

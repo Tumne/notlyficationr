@@ -11,9 +11,12 @@ const reducer = (state: IState, action: IAction): IState => {
 
   switch (action.type) {
     case TYPE.ADD_NOTE:
+      const addNotePayload = action.payload as INote;
       return {
         ...state,
-        notes: [...(action.payload as INote[]), ...state.notes],
+        notes: [addNotePayload, ...state.notes],
+        selectedNote: { ...state.selectedNote, ...addNotePayload },
+        isNotesOpen: false,
       };
 
     case TYPE.UPDATE_NOTE:
@@ -22,7 +25,6 @@ const reducer = (state: IState, action: IAction): IState => {
         ...note,
         ...(note.id === newNote.id && newNote),
       }));
-
       return {
         ...state,
         notes: updatedNotes,
@@ -37,7 +39,7 @@ const reducer = (state: IState, action: IAction): IState => {
       return {
         ...state,
         notes: newNotes,
-        selectedNote: null,
+        selectedNote: newNotes.length ? newNotes[0] : null,
       };
 
     case TYPE.RESET_NOTES:
@@ -47,10 +49,10 @@ const reducer = (state: IState, action: IAction): IState => {
     case TYPE.SET_SELECTED_NOTE:
       const selectedNote =
         state.notes.find((note) => note.id === action.payload) || null;
-      return { ...state, selectedNote };
+      return { ...state, selectedNote, isNotesOpen: false };
 
     case TYPE.UNSET_SELECTED_NOTE:
-      return { ...state, selectedNote: null };
+      return { ...state, selectedNote: null, isNotesOpen: true };
 
     default:
       throw new Error();

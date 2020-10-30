@@ -5,12 +5,16 @@ import { EditPreviewNote, Flex } from './EditPreviewNote';
 
 export const NotesDetails: React.FC<{}> = () => {
   const {
-    state: { selectedNote },
+    state: { selectedNote, isNotesOpen },
   } = useContext(NoteContext);
 
-  return (
-    <Flex>
-      {selectedNote ? <EditPreviewNote {...selectedNote} /> : <AddNote />}
-    </Flex>
-  );
+  let details = null;
+
+  if (selectedNote) {
+    details = <EditPreviewNote {...selectedNote} />;
+  } else if (isNotesOpen) {
+    details = <AddNote />;
+  }
+
+  return <Flex>{details}</Flex>;
 };

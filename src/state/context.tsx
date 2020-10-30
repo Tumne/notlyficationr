@@ -12,6 +12,7 @@ import { localStorageUtil, LSKey } from './utils/localStorageUtil';
 export const initialState: IState = {
   notes: [],
   selectedNote: null,
+  isNotesOpen: false,
 };
 
 interface IContextProps {
