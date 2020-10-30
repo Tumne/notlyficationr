@@ -26,6 +26,9 @@ const Button = styled.button<{ width?: number; variantColor?: string }>`
   }
 `;
 
+/**
+ * Use this when you need an un-styled button
+ */
 const Clickable = styled.button<{ width?: number }>`
   border: none;
   outline: none;
