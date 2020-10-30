@@ -1,4 +1,6 @@
-# ![alt text](https://i.pinimg.com/474x/5f/5c/91/5f5c916b12b4957e957f368ca2e983fe.jpg) Notlyficationr
+<img src="https://i.pinimg.com/474x/5f/5c/91/5f5c916b12b4957e957f368ca2e983fe.jpg" width="100px"> 
+
+# Notlyficationr
 
 _Because you can never have too unique of a name_
 
