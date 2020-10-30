@@ -24,7 +24,7 @@ const AddNote: React.FC<{}> = () => {
       }}
     >
       <Button type="submit" variantColor="#349336" disabled={!title || !text}>
-        Save
+        Add
       </Button>
       <Button
         type="button"

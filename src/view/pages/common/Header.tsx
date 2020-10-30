@@ -13,6 +13,8 @@ const Container = styled.div`
   align-items: center;
   height: 70px;
   border-bottom: 1px solid #dedede;
+  background: white;
+  z-index: 1;
 `;
 
 const Img = styled.img`
@@ -72,7 +74,7 @@ const Header: React.FC<{}> = () => {
             dispatch({ type: TYPE.SET_NOTES_OPEN, payload: true });
           }}
         >
-          New Note
+          Add Note
         </Button>
       </ButtonContainer>
     </Container>
