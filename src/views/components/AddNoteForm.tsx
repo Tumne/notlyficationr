@@ -1,7 +1,17 @@
 import React, { useContext, useState } from 'react';
+import styled from 'styled-components';
 import { TYPE } from '../../state/constants';
 import { NoteContext } from '../../state/noteContext';
-import { Button, Form, Input } from '../common';
+import { Button, Form } from '../common';
+
+const TextArea = styled.textarea`
+  padding: 0.5em;
+  margin: 0.5em;
+  color: 'palevioletred';
+  background: papayawhip;
+  border: none;
+  border-radius: 3px;
+`;
 
 const AddNote = () => {
   const [text, setText] = useState('');
@@ -21,7 +31,7 @@ const AddNote = () => {
         setText('');
       }}
     >
-      <Input value={text} onChange={(e) => setText(e.target.value)} />
+      <TextArea value={text} onChange={(e) => setText(e.target.value)} />
       <Button type="submit" disabled={!text}>
         +
       </Button>

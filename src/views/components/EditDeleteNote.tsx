@@ -1,7 +1,18 @@
 import React, { useContext, useState } from 'react';
+import styled from 'styled-components';
 import { TYPE } from '../../state/constants';
 import { NoteContext } from '../../state/noteContext';
-import { Button, Input } from '../common';
+import { Button } from '../common';
+
+const TextArea = styled.textarea`
+  height: 100px;
+  padding: 0.5em;
+  margin: 0.5em;
+  color: 'palevioletred';
+  background: papayawhip;
+  border: none;
+  border-radius: 3px;
+`;
 
 interface Props {
   id: string;
@@ -34,17 +45,7 @@ export const EditDeleteNote: React.FC<Props> = ({ id, text }) => {
     <div>
       {toggle ? (
         <>
-          <Input
-            value={newText}
-            onChange={(e) => setNewText(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                handleSubmit(e);
-              } else if (e.key === 'Escape') {
-                handleReset();
-              }
-            }}
-          />
+          <TextArea value={text} onChange={(e) => setNewText(e.target.value)} />
           <Button type="button" onClick={handleSubmit}>
             Save
           </Button>
@@ -54,7 +55,9 @@ export const EditDeleteNote: React.FC<Props> = ({ id, text }) => {
         </>
       ) : (
         <>
-          {text}
+          {text.split(`\n`).map((item, i) => (
+            <p key={i}>{item}</p>
+          ))}
           <Button type="button" onClick={() => setToggle(true)}>
             Edit
           </Button>
