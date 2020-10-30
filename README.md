@@ -1,4 +1,4 @@
-<img src="https://i.pinimg.com/474x/5f/5c/91/5f5c916b12b4957e957f368ca2e983fe.jpg" width="100px"> 
+<img src="https://i.pinimg.com/474x/5f/5c/91/5f5c916b12b4957e957f368ca2e983fe.jpg" width="100px">
 
 # Notlyficationr
 
@@ -18,7 +18,7 @@ yarn
 yarn start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) in browser
 
 ## Built With
 
@@ -28,7 +28,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - [Styled Components](https://styled-components.com/) - Visual primitives for the component age.
 - [Styled Icons](https://github.com/styled-icons/styled-icons) - Imported Icon packs used as styled components
 
-## Authors
+## Author
 
 - **Nikhil Tumne** - _Developers Developers Developers_ - [Freshly Grazed](http://freshlygrazed.com/)
 
