@@ -3,10 +3,18 @@ import styled from 'styled-components';
 import { TYPE } from '../../../state/constants';
 import { NoteContext } from '../../../state/context';
 import { Button, Input, TextArea } from '../../common';
+import { DeleteNote } from './DeleteNote';
 
 export const Flex = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const Paragraph = styled.p`
+  height: calc(100vh - 210px);
+  overflow: scroll;
+  white-space: pre-line;
+  margin: 42px 0 0;
 `;
 
 interface Props {
@@ -48,47 +56,50 @@ export const EditPreviewNote: React.FC<Props> = ({ id, text, title }) => {
 
   return (
     <div>
-      <div>
-        {toggle ? (
-          <>
-            <Button type="button" onClick={handleSubmit}>
+      {toggle ? (
+        <>
+          <div>
+            <Button
+              type="button"
+              variantColor="#349336"
+              width={70}
+              onClick={handleSubmit}
+            >
               Save
             </Button>
             <Button type="button" onClick={handleReset}>
               Cancel
             </Button>
-          </>
-        ) : (
-          <Button type="button" onClick={() => setToggle(true)}>
-            Edit
-          </Button>
-        )}
-        <Button
-          type="button"
-          onClick={() => {
-            dispatch({ type: TYPE.DELETE_NOTE, payload: id });
-          }}
-        >
-          x
-        </Button>
-      </div>
-      {toggle ? (
-        <Flex>
-          <Input
-            value={newTitle}
-            onChange={(e) => setNewTitle(e.target.value)}
-          />
-          <TextArea
-            value={newText}
-            onChange={(e) => setNewText(e.target.value)}
-          />
-        </Flex>
+            <DeleteNote id={id} />
+          </div>
+          <Flex>
+            <Input
+              value={newTitle}
+              onChange={(e) => setNewTitle(e.target.value)}
+            />
+            <TextArea
+              value={newText}
+              onChange={(e) => setNewText(e.target.value)}
+            />
+          </Flex>
+        </>
       ) : (
         <>
-          <h3>{title}</h3>
-          {text.split(`\n`).map((item, i) => (
-            <p key={i}>{item}</p>
-          ))}
+          <div>
+            <Button
+              variantColor="#377bb5"
+              type="button"
+              width={70}
+              onClick={() => setToggle(true)}
+            >
+              Edit
+            </Button>
+            <DeleteNote id={id} />
+          </div>
+          <div style={{ padding: '0 21px' }}>
+            <h3 style={{ margin: '21px 0' }}>{title}</h3>
+            <Paragraph>{text}</Paragraph>
+          </div>
         </>
       )}
     </div>

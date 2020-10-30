@@ -26,21 +26,6 @@ const Title = styled.h2`
   padding-left: 10px;
 `;
 
-const AddNote = styled(Button)`
-  color: white;
-  border-color: #ea5459;
-  background: #db4d52;
-
-  :disabled {
-    background: pink;
-    border-color: pink;
-  }
-
-  :not(:disabled):hover {
-    background-color: #ea5459;
-  }
-`;
-
 const ButtonContainer = styled.div`
   position: absolute;
   right: 0;
@@ -71,6 +56,7 @@ const Header: React.FC<{}> = () => {
             </Button>
             <ReactTooltip
               type="error"
+              backgroundColor="#db4d52"
               id="deleteAllNotes"
               place="bottom"
               effect="solid"
@@ -79,14 +65,15 @@ const Header: React.FC<{}> = () => {
             </ReactTooltip>
           </>
         ) : null}
-        <AddNote
+        <Button
+          variantColor="#349336"
           disabled={isNotesOpen}
           onClick={() => {
             dispatch({ type: TYPE.UNSET_SELECTED_NOTE, payload: '' });
           }}
         >
           Add Note
-        </AddNote>
+        </Button>
       </ButtonContainer>
     </Container>
   );

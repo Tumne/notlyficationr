@@ -23,7 +23,7 @@ const AddNote: React.FC<{}> = () => {
         setTitle('');
       }}
     >
-      <Button type="submit" disabled={!title || !text}>
+      <Button type="submit" variantColor="#349336" disabled={!title || !text}>
         Save
       </Button>
       <Flex>
