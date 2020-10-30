@@ -24,7 +24,10 @@ export const Menu: React.FC<{}> = () => {
       </IconButton>
       <ReactTooltip id="registerTip" type="info" place="bottom" effect="solid">
         <h3 style={{ margin: '10px 0' }}>Welcome to Notlyficationr</h3>
-        <p>Add, edit, & delete notes effortlessly and serverlessly!</p>
+        <p>
+          <i>Add</i>, <i>edit</i>, & <i>delete</i> notes <b>effortlessly</b> and{' '}
+          <b>serverlessly</b>!
+        </p>
       </ReactTooltip>
     </Container>
   );

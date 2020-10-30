@@ -6,6 +6,16 @@ import { Clickable, Stack } from '../../common';
 
 const Note = styled.div`
   border-bottom: 1px solid #dedede;
+
+  h3,
+  p {
+    font-size: 1.17em;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: calc(100% - 10px);
+  }
 `;
 
 const NoteButton = styled(Clickable)<{ isSelected?: boolean }>`
@@ -32,7 +42,7 @@ export const NotesList: React.FC<{}> = () => {
         >
           <Note>
             <h3>{title}</h3>
-            {text}
+            <p>{text}</p>
           </Note>
         </NoteButton>
       ))}
