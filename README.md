@@ -1,10 +1,10 @@
-# Notlyficationr
+# ![alt text](https://i.pinimg.com/474x/5f/5c/91/5f5c916b12b4957e957f368ca2e983fe.jpg) Notlyficationr
 
 _Because you can never have too unique of a name_
 
 This is a basic note taking app built in react and typescript. A single user can create, view, edit, and delete basic notes. The state management is handled using React’s Context API. The persistent data is stored using localStorage.
 
-(any stylish resemblance to Notion or Bear apps is strictly coincidental 😉)
+(any stylish resemblance to Notion or Bear notetaking app is strictly coincidental 😉)
 
 ## Getting Started
 
