@@ -51,7 +51,6 @@ const Header: React.FC<{}> = () => {
         <Img src={LogoSrc} />
         <Title>Notlyficationr</Title>
       </Flex>
-
       <ReactTooltip type="dark" id="slogan" place="bottom" effect="solid">
         <i>Because you can never have too unique of a name...</i>
       </ReactTooltip>

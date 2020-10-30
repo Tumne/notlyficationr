@@ -17,6 +17,8 @@ interface LocalStorageUtil {
   removeAll: () => void;
 }
 
+// localStorage utils object generically typed
+// alternatively: could have created a useLocalStorage hook
 export const localStorageUtil: LocalStorageUtil = {
   set: (key, object) => localStorage.setItem(key, JSON.stringify(object)),
   get: (key) => {

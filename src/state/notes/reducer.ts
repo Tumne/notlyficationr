@@ -9,6 +9,7 @@ const reducer = (state: IState, action: IAction): IState => {
     localStorageUtil.remove(LSKey.SELECTED_NOTE);
   };
 
+  // adds a new note
   switch (action.type) {
     case TYPE.ADD_NOTE:
       const addNotePayload = action.payload as INote;
@@ -19,6 +20,8 @@ const reducer = (state: IState, action: IAction): IState => {
         isNotesOpen: false,
       };
 
+    // updates notes array
+    // sets updated note to selectedNote
     case TYPE.UPDATE_NOTE:
       const newNote = action.payload as INote;
       const updatedNotes = state.notes.map((note) => ({
@@ -31,8 +34,10 @@ const reducer = (state: IState, action: IAction): IState => {
         selectedNote: newNote,
       };
 
+    // deletes note by id
     case TYPE.DELETE_NOTE:
       const newNotes = state.notes.filter((note) => note.id !== action.payload);
+      // destroy our localStorage fields
       if (!newNotes.length) {
         resetLocalStorage();
       }
@@ -42,15 +47,19 @@ const reducer = (state: IState, action: IAction): IState => {
         selectedNote: newNotes.length ? newNotes[0] : null,
       };
 
+    // reset state
     case TYPE.RESET_NOTES:
       resetLocalStorage();
       return { ...initialState };
 
+    // change previews of different notes
     case TYPE.SET_SELECTED_NOTE:
       const selectedNote =
         state.notes.find((note) => note.id === action.payload) || null;
       return { ...state, selectedNote, isNotesOpen: false };
 
+    // boolean value to show/hide adding note form
+    // alternatively: accomplish this with useState and prop drilling
     case TYPE.SET_NOTES_OPEN:
       return {
         ...state,
@@ -59,7 +68,7 @@ const reducer = (state: IState, action: IAction): IState => {
       };
 
     default:
-      throw new Error();
+      throw new Error('Unknown error in reducer');
   }
 };
 

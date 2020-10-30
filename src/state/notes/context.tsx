@@ -20,6 +20,7 @@ interface IContextProps {
   dispatch: (action: IAction) => void;
 }
 
+// NoteContext used to manage note state via the useContext hook
 const NoteContext = createContext<IContextProps>({
   state: initialState,
   dispatch: () => {},
@@ -31,6 +32,7 @@ interface INoteProvider {
   children: ReactChild | ReactChildren;
 }
 
+// NoteContext gets and sets localStorage data
 const NoteProvider = ({ children }: INoteProvider) => {
   const LSNotes = localStorageUtil.get(LSKey.NOTES);
   const LSSelectedNote = localStorageUtil.get(LSKey.SELECTED_NOTE);
