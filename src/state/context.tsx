@@ -5,12 +5,13 @@ import React, {
   useEffect,
   useReducer,
 } from 'react';
-import reducer from './noteReducer';
+import reducer from './reducer';
 import { IAction, IState } from './interfaces';
 import { localStorageUtil, LSKey } from './utils/localStorageUtil';
 
 const initialState: IState = {
   notes: [],
+  selectedNote: null,
 };
 
 interface IContextProps {
@@ -31,10 +32,10 @@ interface INoteProvider {
 
 const NoteProvider = ({ children }: INoteProvider) => {
   const LSNotes = localStorageUtil.get(LSKey.NOTES);
-  const [state, dispatch] = useReducer(
-    reducer,
-    LSNotes ? { notes: LSNotes } : initialState
-  );
+  const [state, dispatch] = useReducer(reducer, {
+    ...initialState,
+    ...(LSNotes && { notes: LSNotes }),
+  });
 
   useEffect(() => {
     if (state.notes.length) {

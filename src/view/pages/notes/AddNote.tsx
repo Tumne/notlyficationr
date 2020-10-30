@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
-import { TYPE } from '../../state/constants';
-import { NoteContext } from '../../state/noteContext';
-import { Button, Form } from '../common';
+import { TYPE } from '../../../state/constants';
+import { NoteContext } from '../../../state/context';
+import Button from '../../common/Button';
+import Form from '../../common/Form';
 
 const Input = styled.input`
   padding: 0.5em;
@@ -14,13 +15,11 @@ const Input = styled.input`
 `;
 
 const TextArea = styled.textarea`
-  height: 100px;
-  padding: 0.5em;
-  margin: 0.5em;
-  color: 'palevioletred';
-  background: papayawhip;
-  border: none;
-  border-radius: 3px;
+  width: 600px;
+  height: 120px;
+  border: 3px solid #cccccc;
+  padding: 5px;
+  font-family: Tahoma, sans-serif;
 `;
 
 const AddNote = () => {
@@ -51,10 +50,7 @@ const AddNote = () => {
       />
       <TextArea
         value={text}
-        onChange={(e) => {
-          setText(e.target.value);
-          console.log(e.target.value.toString());
-        }}
+        onChange={(e) => setText(e.target.value)}
         placeholder="Add text here..."
       />
       <Button type="submit" disabled={!title || !text}>

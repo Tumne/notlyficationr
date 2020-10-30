@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
-import { TYPE } from '../../state/constants';
-import { NoteContext } from '../../state/noteContext';
-import { Button } from '../common';
+import { TYPE } from '../../../state/constants';
+import { NoteContext } from '../../../state/context';
+import { Button } from '../../common';
 
 const Input = styled.input`
   padding: 0.5em;
@@ -40,7 +40,7 @@ export const EditDeleteNote: React.FC<Props> = ({ id, text, title }) => {
     if (newTitle || newText) {
       if (text !== newText || title !== newText) {
         dispatch({
-          type: TYPE.EDIT_NOTE,
+          type: TYPE.UPDATE_NOTE,
           payload: { id, title: newTitle, text: newText },
         });
       }
@@ -59,8 +59,14 @@ export const EditDeleteNote: React.FC<Props> = ({ id, text, title }) => {
     <div>
       {toggle ? (
         <>
-          <Input value={title} onChange={(e) => setNewTitle(e.target.value)} />
-          <TextArea value={text} onChange={(e) => setNewText(e.target.value)} />
+          <Input
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+          />
+          <TextArea
+            value={newText}
+            onChange={(e) => setNewText(e.target.value)}
+          />
           <Button type="button" onClick={handleSubmit}>
             Save
           </Button>

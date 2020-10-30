@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { NoteProvider } from './state/noteContext';
-import App from './views/layout/App';
+import { NoteProvider } from './state/context';
+import App from './view/layout/App';
 
 ReactDOM.render(
   <NoteProvider>

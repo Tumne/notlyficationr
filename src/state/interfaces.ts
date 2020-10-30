@@ -8,6 +8,7 @@ export interface INote {
 
 export interface IState {
   notes: INote[];
+  selectedNote: INote | null;
 }
 
 export interface IAction {

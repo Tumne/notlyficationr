@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import LogoSrc from '../static/logo.png';
+import LogoSrc from '../assets/logo.png';
 
 const Header = styled.div`
   display: flex;
