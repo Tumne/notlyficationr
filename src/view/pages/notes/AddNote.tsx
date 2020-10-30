@@ -26,6 +26,12 @@ const AddNote: React.FC<{}> = () => {
       <Button type="submit" variantColor="#349336" disabled={!title || !text}>
         Save
       </Button>
+      <Button
+        type="button"
+        onClick={() => dispatch({ type: TYPE.SET_NOTES_OPEN, payload: false })}
+      >
+        Cancel
+      </Button>
       <Flex>
         <Input
           value={title}

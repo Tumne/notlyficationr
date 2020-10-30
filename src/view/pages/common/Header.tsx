@@ -61,7 +61,7 @@ const Header: React.FC<{}> = () => {
               place="bottom"
               effect="solid"
             >
-              <h3>Warning: Deletes all notes</h3>
+              <h3>Warning! Deletes all notes!</h3>
             </ReactTooltip>
           </>
         ) : null}
@@ -69,10 +69,10 @@ const Header: React.FC<{}> = () => {
           variantColor="#349336"
           disabled={isNotesOpen}
           onClick={() => {
-            dispatch({ type: TYPE.UNSET_SELECTED_NOTE, payload: '' });
+            dispatch({ type: TYPE.SET_NOTES_OPEN, payload: true });
           }}
         >
-          Add Note
+          New Note
         </Button>
       </ButtonContainer>
     </Container>

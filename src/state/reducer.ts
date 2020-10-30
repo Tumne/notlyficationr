@@ -51,8 +51,12 @@ const reducer = (state: IState, action: IAction): IState => {
         state.notes.find((note) => note.id === action.payload) || null;
       return { ...state, selectedNote, isNotesOpen: false };
 
-    case TYPE.UNSET_SELECTED_NOTE:
-      return { ...state, selectedNote: null, isNotesOpen: true };
+    case TYPE.SET_NOTES_OPEN:
+      return {
+        ...state,
+        selectedNote: null,
+        isNotesOpen: action.payload as boolean,
+      };
 
     default:
       throw new Error();

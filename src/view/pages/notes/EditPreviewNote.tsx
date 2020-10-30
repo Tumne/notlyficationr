@@ -6,6 +6,7 @@ import { Button, Input, TextArea } from '../../common';
 import { DeleteNote } from './DeleteNote';
 
 export const Flex = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
 `;

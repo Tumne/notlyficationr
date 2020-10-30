@@ -14,5 +14,5 @@ export interface IState {
 
 export interface IAction {
   type: TYPE;
-  payload?: INote | string;
+  payload?: INote | string | boolean;
 }

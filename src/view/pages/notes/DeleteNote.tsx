@@ -19,7 +19,7 @@ export const DeleteNote: React.FC<DeleteNoteProps> = ({ id }) => {
         dispatch({ type: TYPE.DELETE_NOTE, payload: id });
       }}
     >
-      <Trash style={{ padding: '0 7px 2px' }} />
+      <Trash style={{ padding: '0 7px 2px', color: 'grey' }} />
     </Clickable>
   );
 };
