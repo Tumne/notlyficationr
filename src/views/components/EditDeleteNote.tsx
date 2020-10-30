@@ -4,6 +4,15 @@ import { TYPE } from '../../state/constants';
 import { NoteContext } from '../../state/noteContext';
 import { Button } from '../common';
 
+const Input = styled.input`
+  padding: 0.5em;
+  margin: 0.5em;
+  color: 'palevioletred';
+  background: papayawhip;
+  border: none;
+  border-radius: 3px;
+`;
+
 const TextArea = styled.textarea`
   height: 100px;
   padding: 0.5em;
@@ -16,19 +25,24 @@ const TextArea = styled.textarea`
 
 interface Props {
   id: string;
+  title: string;
   text: string;
 }
 
-export const EditDeleteNote: React.FC<Props> = ({ id, text }) => {
+export const EditDeleteNote: React.FC<Props> = ({ id, text, title }) => {
   const { dispatch } = useContext(NoteContext);
   const [toggle, setToggle] = useState(false);
+  const [newTitle, setNewTitle] = useState(title);
   const [newText, setNewText] = useState(text);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (newText) {
-      if (text !== newText) {
-        dispatch({ type: TYPE.EDIT_NOTE, payload: { id, text: newText } });
+    if (newTitle || newText) {
+      if (text !== newText || title !== newText) {
+        dispatch({
+          type: TYPE.EDIT_NOTE,
+          payload: { id, title: newTitle, text: newText },
+        });
       }
       setToggle(false);
     } else {
@@ -45,6 +59,7 @@ export const EditDeleteNote: React.FC<Props> = ({ id, text }) => {
     <div>
       {toggle ? (
         <>
+          <Input value={title} onChange={(e) => setNewTitle(e.target.value)} />
           <TextArea value={text} onChange={(e) => setNewText(e.target.value)} />
           <Button type="button" onClick={handleSubmit}>
             Save
@@ -55,9 +70,11 @@ export const EditDeleteNote: React.FC<Props> = ({ id, text }) => {
         </>
       ) : (
         <>
-          {text.split(`\n`).map((item, i) => (
+          <h3>{title}</h3>
+          {text}
+          {/* {text.split(`\n`).map((item, i) => (
             <p key={i}>{item}</p>
-          ))}
+          ))} */}
           <Button type="button" onClick={() => setToggle(true)}>
             Edit
           </Button>
