@@ -2,7 +2,7 @@
 
 # Notlyficationr
 
-_Because you can never have too unique of a name_
+_Because you can never have too unique of a name..._
 
 This is a basic note taking app built in react typescript. A single user can create, view, edit, and delete basic notes. The state management is handled using React’s Context API. The persistent data is stored using localStorage.
 
