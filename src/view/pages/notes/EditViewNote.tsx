@@ -1,15 +1,10 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { TYPE } from '../../../state/constants';
-import { NoteContext } from '../../../state/context';
-import { Button, Input, TextArea } from '../../common';
+import { TYPE } from '../../../state/notes/constants';
+import { NoteContext } from '../../../state/notes/context';
+import { INote } from '../../../state/notes/interfaces';
+import { Button, Flex, Input, TextArea } from '../../common';
 import { DeleteNote } from './DeleteNote';
-
-export const Flex = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-`;
 
 const Paragraph = styled.p`
   height: calc(100vh - 210px);
@@ -18,13 +13,7 @@ const Paragraph = styled.p`
   margin: 42px 0 0;
 `;
 
-interface Props {
-  id: string;
-  title: string;
-  text: string;
-}
-
-export const EditPreviewNote: React.FC<Props> = ({ id, text, title }) => {
+export const EditViewNote: React.FC<INote> = ({ id, text, title }) => {
   const { dispatch } = useContext(NoteContext);
   const [toggle, setToggle] = useState(false);
   const [newTitle, setNewTitle] = useState(title);

@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { TYPE } from '../../../state/constants';
-import { NoteContext } from '../../../state/context';
-import { Button, Input, TextArea } from '../../common';
+import { TYPE } from '../../../state/notes/constants';
+import { NoteContext } from '../../../state/notes/context';
+import { Button, Flex, Input, TextArea } from '../../common';
 import Form from '../../common/Form';
-import { Flex } from './EditPreviewNote';
 
 const AddNote: React.FC<{}> = () => {
-  const [title, setTitle] = useState('');
-  const [text, setText] = useState('');
+  const [newTitle, setNewTitle] = useState('');
+  const [newText, setNewText] = useState('');
 
   const { dispatch } = useContext(NoteContext);
 
@@ -17,13 +16,21 @@ const AddNote: React.FC<{}> = () => {
         e.preventDefault();
         dispatch({
           type: TYPE.ADD_NOTE,
-          payload: { id: new Date().valueOf().toString(), title, text },
+          payload: {
+            id: new Date().valueOf().toString(),
+            title: newTitle,
+            text: newText,
+          },
         });
-        setText('');
-        setTitle('');
+        setNewText('');
+        setNewTitle('');
       }}
     >
-      <Button type="submit" variantColor="#349336" disabled={!title || !text}>
+      <Button
+        type="submit"
+        variantColor="#349336"
+        disabled={!newTitle || !newText}
+      >
         Add
       </Button>
       <Button
@@ -34,13 +41,13 @@ const AddNote: React.FC<{}> = () => {
       </Button>
       <Flex>
         <Input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={newTitle}
+          onChange={(e) => setNewTitle(e.target.value)}
           placeholder="Title"
         />
         <TextArea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={newText}
+          onChange={(e) => setNewText(e.target.value)}
           placeholder="Add text here..."
         />
       </Flex>

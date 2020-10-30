@@ -3,3 +3,4 @@ export { default as Form } from './Form';
 export { default as Input } from './Input';
 export { default as Stack } from './Stack';
 export { default as TextArea } from './TextArea';
+export { default as Flex } from './Flex';

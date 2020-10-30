@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { TYPE } from '../../../state/constants';
-import { NoteContext } from '../../../state/context';
+import { TYPE } from '../../../state/notes/constants';
+import { NoteContext } from '../../../state/notes/context';
 import { Clickable, Stack } from '../../common';
 
 const Note = styled.div`

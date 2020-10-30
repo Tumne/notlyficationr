@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import ReactTooltip from 'react-tooltip';
 import styled from 'styled-components';
-import { TYPE } from '../../../state/constants';
-import { NoteContext } from '../../../state/context';
+import { TYPE } from '../../../state/notes/constants';
+import { NoteContext } from '../../../state/notes/context';
 import LogoSrc from '../../assets/logo.png';
 import { Button } from '../../common';
 

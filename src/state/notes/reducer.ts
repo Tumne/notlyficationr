@@ -1,7 +1,7 @@
 import { TYPE } from './constants';
 import { initialState } from './context';
 import { IAction, INote, IState } from './interfaces';
-import { localStorageUtil, LSKey } from './utils/localStorageUtil';
+import { localStorageUtil, LSKey } from '../utils/localStorageUtil';
 
 const reducer = (state: IState, action: IAction): IState => {
   const resetLocalStorage = () => {

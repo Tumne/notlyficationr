@@ -1,4 +1,4 @@
-import { INote } from '../interfaces';
+import { INote } from '../notes/interfaces';
 
 export enum LSKey {
   NOTES = 'notes',

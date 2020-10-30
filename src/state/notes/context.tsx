@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import reducer from './reducer';
 import { IAction, IState } from './interfaces';
-import { localStorageUtil, LSKey } from './utils/localStorageUtil';
+import { localStorageUtil, LSKey } from '../utils/localStorageUtil';
 
 export const initialState: IState = {
   notes: [],

@@ -19,6 +19,7 @@ const Button = styled.button<{ width?: number; variantColor?: string }>`
     background: white;
     cursor: default;
   }
+
   :not(:disabled):hover {
     background-color: ${({ variantColor }) => variantColor || '#f5f5f5'};
     ${({ variantColor }) => variantColor && 'opacity: 0.85'};
