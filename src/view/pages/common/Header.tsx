@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { TYPE } from '../../../state/notes/constants';
 import { NoteContext } from '../../../state/notes/context';
 import LogoSrc from '../../assets/logo.png';
-import { Button } from '../../common';
+import { Button, Flex } from '../../common';
 
 const Container = styled.div`
   position: relative;
@@ -41,8 +41,20 @@ const Header: React.FC<{}> = () => {
 
   return (
     <Container>
-      <Img src={LogoSrc} />
-      <Title>Notlyficationr</Title>
+      <Flex
+        direction="row"
+        alignItems="center"
+        data-tip
+        data-for="slogan"
+        data-offset="{'right': 20, 'top': 20 }"
+      >
+        <Img src={LogoSrc} />
+        <Title>Notlyficationr</Title>
+      </Flex>
+
+      <ReactTooltip type="dark" id="slogan" place="bottom" effect="solid">
+        <i>Because you can never have too unique of a name...</i>
+      </ReactTooltip>
       <ButtonContainer>
         {notes.length ? (
           <>

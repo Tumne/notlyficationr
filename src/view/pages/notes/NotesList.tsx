@@ -3,6 +3,14 @@ import styled from 'styled-components';
 import { TYPE } from '../../../state/notes/constants';
 import { NoteContext } from '../../../state/notes/context';
 import { Clickable, Stack } from '../../common';
+import ImageSrc from '../../assets/paperairplane.png';
+
+const NoteButton = styled(Clickable)<{ isSelected?: boolean }>`
+  ${({ isSelected }) => isSelected && 'border-left: 5px solid #db4d52;'}
+  background: ${({ isSelected }) => (isSelected ? 'white' : '#fbfbfb')};
+  padding-left: ${({ isSelected }) => (isSelected ? 15 : 20)}px;
+  z-index: 1;
+`;
 
 const Note = styled.div`
   border-bottom: 1px solid #dedede;
@@ -18,10 +26,11 @@ const Note = styled.div`
   }
 `;
 
-const NoteButton = styled(Clickable)<{ isSelected?: boolean }>`
-  ${({ isSelected }) => isSelected && 'border-left: 5px solid #db4d52;'}
-  background: ${({ isSelected }) => (isSelected ? 'white' : '#fbfbfb')};
-  padding-left: ${({ isSelected }) => (isSelected ? 15 : 20)}px;
+const PlaceholderImg = styled.img`
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  width: 50%;
 `;
 
 export const NotesList: React.FC<{}> = () => {
@@ -46,6 +55,7 @@ export const NotesList: React.FC<{}> = () => {
           </Note>
         </NoteButton>
       ))}
+      <PlaceholderImg src={ImageSrc} />
     </Stack>
   );
 };

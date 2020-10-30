@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Stack = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   height: calc(100vh - 70px);

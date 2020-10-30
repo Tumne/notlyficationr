@@ -13,13 +13,14 @@ const IconButton = styled(Clickable)`
   color: #cfcfcf;
   background: transparent;
   padding: 15px;
+  margin-top: 9px;
   cursor: default;
 `;
 
 export const Menu: React.FC<{}> = () => {
   return (
     <Container>
-      <IconButton data-tip data-for="registerTip">
+      <IconButton data-tip data-for="registerTip" data-offset="{'left': 10}">
         <InformationCircle />
       </IconButton>
       <ReactTooltip id="registerTip" type="info" place="bottom" effect="solid">
