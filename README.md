@@ -8,6 +8,9 @@ This is a basic note taking app built in react typescript. A single user can cre
 
 (any stylish resemblance to Notion or Bear's notetaking app is strictly coincidental 😉)
 
+<img width="1092" alt="Screen Shot 2020-10-30 at 5 24 45 PM" src="https://user-images.githubusercontent.com/623755/97758566-8532fe80-1ad5-11eb-894a-533af3a712f6.png">
+
+
 ## Getting Started
 
 ```
