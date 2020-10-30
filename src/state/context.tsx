@@ -32,16 +32,23 @@ interface INoteProvider {
 
 const NoteProvider = ({ children }: INoteProvider) => {
   const LSNotes = localStorageUtil.get(LSKey.NOTES);
+  const LSSelectedNote = localStorageUtil.get(LSKey.SELECTED_NOTE);
   const [state, dispatch] = useReducer(reducer, {
     ...initialState,
     ...(LSNotes && { notes: LSNotes }),
+    ...(LSSelectedNote && { selectedNote: LSSelectedNote }),
   });
+  const { notes, selectedNote } = state;
 
   useEffect(() => {
-    if (state.notes.length) {
-      localStorageUtil.set(LSKey.NOTES, state.notes);
+    if (notes.length) {
+      localStorageUtil.set(LSKey.NOTES, notes);
     }
-  }, [state]);
+  }, [notes]);
+
+  useEffect(() => {
+    localStorageUtil.set(LSKey.SELECTED_NOTE, selectedNote);
+  }, [selectedNote]);
 
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };

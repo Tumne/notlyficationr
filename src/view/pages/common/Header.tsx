@@ -81,7 +81,7 @@ const Wrapper: React.FC<{}> = () => {
           place="bottom"
           effect="solid"
         >
-          <h3 style={{ margin: '10px 0' }}>Warning: Deleting all notes</h3>
+          <h3>Warning: Deletes all notes</h3>
         </ReactTooltip>
       </ButtonContainer>
     </Header>

@@ -15,13 +15,14 @@ const IconButton = styled(Clickable)`
   padding: 15px;
   cursor: default;
 `;
+
 export const Menu: React.FC<{}> = () => {
   return (
     <Container>
       <IconButton data-tip data-for="registerTip">
         <InformationCircle />
       </IconButton>
-      <ReactTooltip id="registerTip" type="info" place="right" effect="solid">
+      <ReactTooltip id="registerTip" type="info" place="bottom" effect="solid">
         <h3 style={{ margin: '10px 0' }}>Welcome to Notlyficationr</h3>
         <p>Add, edit, & delete notes effortlessly and serverlessly!</p>
       </ReactTooltip>
