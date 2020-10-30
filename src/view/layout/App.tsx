@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Wrapper from './Wrapper';
+import Header from '../pages/common/Header';
 import { Menu } from '../pages/common/Menu';
 import { NotesDetails } from '../pages/notes/NoteDetails';
 import { NotesList } from '../pages/notes/NotesList';
@@ -12,13 +12,14 @@ const Container = styled.div`
 
 const App: React.FC<{}> = () => {
   return (
-    <Wrapper>
+    <>
+      <Header />
       <Container>
         <Menu />
         <NotesList />
         <NotesDetails />
       </Container>
-    </Wrapper>
+    </>
   );
 };
 
