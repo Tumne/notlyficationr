@@ -1,26 +1,41 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { TYPE } from '../../../state/constants';
 import { NoteContext } from '../../../state/context';
-import { Button } from '../../common';
+import { Clickable, Stack } from '../../common';
 
-export const Flex = styled.div`
-  display: flex;
-  flex-direction: column;
+const Note = styled.div`
+  border-bottom: 1px solid #dedede;
+`;
+
+const NoteButton = styled(Clickable)<{ isSelected?: boolean }>`
+  ${({ isSelected }) => isSelected && 'border-left: 5px solid #db4d52;'}
+  background: ${({ isSelected }) => (isSelected ? 'white' : '#fbfbfb')};
+  padding-left: ${({ isSelected }) => (isSelected ? 15 : 20)}px;
 `;
 
 export const NotesList: React.FC<{}> = () => {
   const {
-    state: { notes },
+    state: { notes, selectedNote },
+    dispatch,
   } = useContext(NoteContext);
 
   return (
-    <Flex>
+    <Stack>
       {notes.map(({ id, title, text }) => (
-        <Button key={id} onClick={() => console.log(id)}>
-          <h3>{title}</h3>
-          {text}
-        </Button>
+        <NoteButton
+          key={id}
+          onClick={() =>
+            dispatch({ type: TYPE.SET_SELECTED_NOTE, payload: id })
+          }
+          isSelected={selectedNote?.id === id}
+        >
+          <Note>
+            <h3>{title}</h3>
+            {text}
+          </Note>
+        </NoteButton>
       ))}
-    </Flex>
+    </Stack>
   );
 };

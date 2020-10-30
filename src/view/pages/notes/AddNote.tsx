@@ -1,28 +1,10 @@
 import React, { useContext, useState } from 'react';
-import styled from 'styled-components';
 import { TYPE } from '../../../state/constants';
 import { NoteContext } from '../../../state/context';
-import Button from '../../common/Button';
+import { Button, Input, TextArea } from '../../common';
 import Form from '../../common/Form';
 
-const Input = styled.input`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: 'palevioletred';
-  background: papayawhip;
-  border: none;
-  border-radius: 3px;
-`;
-
-const TextArea = styled.textarea`
-  width: 600px;
-  height: 120px;
-  border: 3px solid #cccccc;
-  padding: 5px;
-  font-family: Tahoma, sans-serif;
-`;
-
-const AddNote = () => {
+const AddNote: React.FC<{}> = () => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
 
@@ -55,15 +37,6 @@ const AddNote = () => {
       />
       <Button type="submit" disabled={!title || !text}>
         Save
-      </Button>
-      <Button
-        type="button"
-        disabled={!notes.length}
-        onClick={() => {
-          dispatch({ type: TYPE.RESET_NOTES });
-        }}
-      >
-        Reset
       </Button>
     </Form>
   );

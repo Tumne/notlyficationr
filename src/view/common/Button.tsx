@@ -3,10 +3,28 @@ import styled from 'styled-components';
 const Button = styled.button`
   background: white;
   font-size: 1em;
-  margin: 1em;
+  margin-left: 0.5em;
   padding: 0.25em 1em;
-  border: 1px solid palevioletred;
+  cursor: pointer;
+  border: 1px solid black;
   border-radius: 3px;
+  outline: none;
+
+  :disabled {
+    border-color: #b7b7b7;
+  }
+  :not(:disabled):hover {
+    background-color: #f5f5f5;
+  }
 `;
 
-export default Button;
+const Clickable = styled.button`
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  display: block;
+  color: inherit;
+`;
+
+export { Button, Clickable };

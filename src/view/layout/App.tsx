@@ -1,11 +1,23 @@
 import React from 'react';
-import Wrapper from '../common/Wrapper';
-import Notes from '../pages/notes';
+import styled from 'styled-components';
+import Wrapper from './Wrapper';
+import { Menu } from '../pages/common/Menu';
+import { NotesDetails } from '../pages/notes/NoteDetails';
+import { NotesList } from '../pages/notes/NotesList';
 
-const App = () => {
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 70px 2fr 5fr;
+`;
+
+const App: React.FC<{}> = () => {
   return (
     <Wrapper>
-      <Notes />
+      <Container>
+        <Menu />
+        <NotesList />
+        <NotesDetails />
+      </Container>
     </Wrapper>
   );
 };

@@ -9,7 +9,7 @@ import reducer from './reducer';
 import { IAction, IState } from './interfaces';
 import { localStorageUtil, LSKey } from './utils/localStorageUtil';
 
-const initialState: IState = {
+export const initialState: IState = {
   notes: [],
   selectedNote: null,
 };

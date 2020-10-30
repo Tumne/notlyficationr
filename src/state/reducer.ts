@@ -1,4 +1,5 @@
 import { TYPE } from './constants';
+import { initialState } from './context';
 import { IAction, INote, IState } from './interfaces';
 import { localStorageUtil, LSKey } from './utils/localStorageUtil';
 
@@ -14,14 +15,16 @@ const reducer = (state: IState, action: IAction): IState => {
         notes: [...(action.payload as INote[]), ...state.notes],
       };
     case TYPE.UPDATE_NOTE:
-      const editedNotes = state.notes.map((note) =>
-        note.id === (action.payload as INote).id
-          ? { ...note, ...(action.payload as INote) }
-          : note
-      );
+      const newNote = action.payload as INote;
+      const updatedNotes = state.notes.map((note) => ({
+        ...note,
+        ...(note.id === newNote.id && newNote),
+      }));
+
       return {
         ...state,
-        notes: editedNotes,
+        notes: updatedNotes,
+        selectedNote: newNote,
       };
     case TYPE.DELETE_NOTE:
       const newNotes = state.notes.filter((note) => note.id !== action.payload);
@@ -31,14 +34,17 @@ const reducer = (state: IState, action: IAction): IState => {
       return {
         ...state,
         notes: newNotes,
+        selectedNote: null,
       };
     case TYPE.RESET_NOTES:
       removeLSNotes();
-      return { ...state, notes: [] };
+      return { ...initialState };
     case TYPE.SET_SELECTED_NOTE:
       const selectedNote =
         state.notes.find((note) => note.id === action.payload) || null;
       return { ...state, selectedNote };
+    case TYPE.UNSET_SELECTED_NOTE:
+      return { ...state, selectedNote: null };
     default:
       throw new Error();
   }
