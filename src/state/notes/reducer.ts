@@ -62,6 +62,7 @@ const reducer = (state: IState, action: IAction): IState => {
     // boolean value to show/hide adding note form
     // alternatively: accomplish this with useState and prop drilling
     case TYPE.SET_NOTES_OPEN:
+      localStorageUtil.remove(LSKey.SELECTED_NOTE);
       return {
         ...state,
         selectedNoteId: null,

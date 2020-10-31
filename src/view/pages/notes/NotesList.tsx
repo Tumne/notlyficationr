@@ -8,6 +8,7 @@ import { DeleteNote } from './operations/DeleteNote';
 
 const Note = styled.div`
   position: relative;
+  z-index: 1;
 `;
 
 const NoteButton = styled(Clickable)<{ isSelected?: boolean }>`
@@ -15,7 +16,6 @@ const NoteButton = styled(Clickable)<{ isSelected?: boolean }>`
   ${({ isSelected }) => isSelected && 'border-left: 5px solid #db4d52;'}
   background: ${({ isSelected }) => (isSelected ? 'white' : '#fbfbfb')};
   padding-left: ${({ isSelected }) => (isSelected ? 15 : 20)}px;
-  z-index: 1;
 `;
 
 const Details = styled.div`
