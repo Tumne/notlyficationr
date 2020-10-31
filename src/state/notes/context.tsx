@@ -1,24 +1,13 @@
-import React, {
-  createContext,
-  ReactChild,
-  ReactChildren,
-  useEffect,
-  useReducer,
-} from 'react';
-import reducer from './reducer';
-import { IAction, IState } from './interfaces';
+import React, { createContext, useEffect, useReducer } from 'react';
 import { localStorageUtil, LSKey } from '../utils/localStorageUtil';
+import { IContextProps, INoteProvider, IState } from './interfaces';
+import reducer from './reducer';
 
 export const initialState: IState = {
   notes: [],
   selectedNote: null,
   isNotesOpen: false,
 };
-
-interface IContextProps {
-  state: IState;
-  dispatch: (action: IAction) => void;
-}
 
 // NoteContext used to manage note state via the useContext hook
 const NoteContext = createContext<IContextProps>({
@@ -27,10 +16,6 @@ const NoteContext = createContext<IContextProps>({
 });
 
 const { Provider } = NoteContext;
-
-interface INoteProvider {
-  children: ReactChild | ReactChildren;
-}
 
 // NoteContext gets and sets localStorage data
 const NoteProvider = ({ children }: INoteProvider) => {

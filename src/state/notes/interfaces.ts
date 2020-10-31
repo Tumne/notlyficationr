@@ -1,3 +1,4 @@
+import { ReactChild, ReactChildren } from 'react';
 import { TYPE } from './constants';
 
 export interface INote {
@@ -15,4 +16,13 @@ export interface IState {
 export interface IAction {
   type: TYPE;
   payload?: INote | string | boolean;
+}
+
+export interface IContextProps {
+  state: IState;
+  dispatch: (action: IAction) => void;
+}
+
+export interface INoteProvider {
+  children: ReactChild | ReactChildren;
 }
