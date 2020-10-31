@@ -14,7 +14,7 @@ const Paragraph = styled.p`
   margin: 42px 0 0;
 `;
 
-export const EditViewNote: React.FC<INote> = ({ id, text, title }) => {
+export const ViewEditNote: React.FC<INote> = ({ id, text, title }) => {
   const { dispatch } = useContext(NoteContext);
   const [toggle, setToggle] = useState(false);
   const [newTitle, setNewTitle] = useState(title);

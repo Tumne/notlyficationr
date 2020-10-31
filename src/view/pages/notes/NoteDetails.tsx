@@ -5,7 +5,7 @@ import { INote } from '../../../state/notes/interfaces';
 import TemplateSrc from '../../assets/template.png';
 import { Flex } from '../../common';
 import AddNote from './operations/AddNote';
-import { EditViewNote } from './operations/EditViewNote';
+import { ViewEditNote } from './operations/ViewEditNote';
 
 const PlaceholderImg = styled.img`
   position: absolute;
@@ -28,7 +28,7 @@ export const NotesDetails: React.FC<{}> = () => {
   let details = <PlaceholderImg src={TemplateSrc} />;
 
   if (selectedNoteId) {
-    details = <EditViewNote {...note} />;
+    details = <ViewEditNote {...note} />;
   } else if (isNotesOpen) {
     details = <AddNote />;
   }
