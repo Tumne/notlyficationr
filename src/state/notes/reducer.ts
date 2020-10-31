@@ -16,12 +16,12 @@ const reducer = (state: IState, action: IAction): IState => {
       return {
         ...state,
         notes: [addNotePayload, ...state.notes],
-        selectedNote: { ...state.selectedNote, ...addNotePayload },
+        selectedNoteId: addNotePayload.id,
         isNotesOpen: false,
       };
 
     // updates notes array
-    // sets updated note to selectedNote
+    // sets updated note to selectedNoteId
     case TYPE.UPDATE_NOTE:
       const newNote = action.payload as INote;
       const updatedNotes = state.notes.map((note) => ({
@@ -31,7 +31,7 @@ const reducer = (state: IState, action: IAction): IState => {
       return {
         ...state,
         notes: updatedNotes,
-        selectedNote: newNote,
+        selectedNoteId: newNote.id,
       };
 
     // deletes note by id
@@ -44,7 +44,7 @@ const reducer = (state: IState, action: IAction): IState => {
       return {
         ...state,
         notes: newNotes,
-        selectedNote: newNotes.length ? newNotes[0] : null,
+        selectedNoteId: newNotes.length ? newNotes[0].id : null,
       };
 
     // reset state
@@ -54,16 +54,17 @@ const reducer = (state: IState, action: IAction): IState => {
 
     // change previews of different notes
     case TYPE.SET_SELECTED_NOTE:
-      const selectedNote =
-        state.notes.find((note) => note.id === action.payload) || null;
-      return { ...state, selectedNote, isNotesOpen: false };
+      const selectedNoteId =
+        (state.notes.find((note) => note.id === action.payload) || {}).id ||
+        null;
+      return { ...state, selectedNoteId, isNotesOpen: false };
 
     // boolean value to show/hide adding note form
     // alternatively: accomplish this with useState and prop drilling
     case TYPE.SET_NOTES_OPEN:
       return {
         ...state,
-        selectedNote: null,
+        selectedNoteId: null,
         isNotesOpen: action.payload as boolean,
       };
 

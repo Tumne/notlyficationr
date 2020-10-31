@@ -9,7 +9,7 @@ export interface INote {
 
 export interface IState {
   notes: INote[];
-  selectedNote: INote | null;
+  selectedNoteId: string | null;
   isNotesOpen: boolean;
 }
 

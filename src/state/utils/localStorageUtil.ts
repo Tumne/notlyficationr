@@ -2,12 +2,12 @@ import { INote } from '../notes/interfaces';
 
 export enum LSKey {
   NOTES = 'notes',
-  SELECTED_NOTE = 'selectedNote',
+  SELECTED_NOTE = 'selectedNoteId',
 }
 
 interface IValues {
   [LSKey.NOTES]: INote[];
-  [LSKey.SELECTED_NOTE]: INote | null;
+  [LSKey.SELECTED_NOTE]: string | null;
 }
 
 interface LocalStorageUtil {

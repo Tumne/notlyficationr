@@ -35,7 +35,7 @@ const PlaceholderImg = styled.img`
 
 export const NotesList: React.FC<{}> = () => {
   const {
-    state: { notes, selectedNote },
+    state: { notes, selectedNoteId },
     dispatch,
   } = useContext(NoteContext);
 
@@ -47,7 +47,7 @@ export const NotesList: React.FC<{}> = () => {
           onClick={() =>
             dispatch({ type: TYPE.SET_SELECTED_NOTE, payload: id })
           }
-          isSelected={selectedNote?.id === id}
+          isSelected={selectedNoteId === id}
         >
           <Note>
             <h3>{title}</h3>

@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { NoteContext } from '../../../state/notes/context';
-import AddNote from './AddNote';
-import { EditViewNote } from './EditViewNote';
+import { INote } from '../../../state/notes/interfaces';
 import TemplateSrc from '../../assets/templates.png';
 import { Flex } from '../../common';
+import AddNote from './AddNote';
+import { EditViewNote } from './EditViewNote';
 
 const PlaceholderImg = styled.img`
   position: absolute;
@@ -12,15 +13,22 @@ const PlaceholderImg = styled.img`
   width: 100%;
 `;
 
+const initialNote: INote = {
+  id: '',
+  title: '',
+  text: '',
+};
+
 export const NotesDetails: React.FC<{}> = () => {
   const {
-    state: { selectedNote, isNotesOpen },
+    state: { notes, selectedNoteId, isNotesOpen },
   } = useContext(NoteContext);
+  const note = notes.find(({ id }) => id === selectedNoteId) || initialNote;
 
   let details = <PlaceholderImg src={TemplateSrc} />;
 
-  if (selectedNote) {
-    details = <EditViewNote {...selectedNote} />;
+  if (selectedNoteId) {
+    details = <EditViewNote {...note} />;
   } else if (isNotesOpen) {
     details = <AddNote />;
   }

@@ -5,12 +5,12 @@ import reducer from './reducer';
 
 export const initialState: IState = {
   notes: [],
-  selectedNote: null,
+  selectedNoteId: null,
   isNotesOpen: false,
 };
 
 const LSNotes = localStorageUtil.get(LSKey.NOTES);
-const LSSelectedNote = localStorageUtil.get(LSKey.SELECTED_NOTE);
+const LSselectedNoteId = localStorageUtil.get(LSKey.SELECTED_NOTE);
 
 // NoteContext used to manage note state via the useContext hook
 const NoteContext = createContext<IContextProps>({
@@ -25,9 +25,9 @@ const NoteProvider = ({ children }: INoteProvider) => {
   const [state, dispatch] = useReducer(reducer, {
     ...initialState,
     ...(LSNotes && { notes: LSNotes }),
-    ...(LSSelectedNote && { selectedNote: LSSelectedNote }),
+    selectedNoteId: LSselectedNoteId || null,
   });
-  const { notes, selectedNote } = state;
+  const { notes, selectedNoteId } = state;
 
   useEffect(() => {
     if (notes.length) {
@@ -36,8 +36,10 @@ const NoteProvider = ({ children }: INoteProvider) => {
   }, [notes]);
 
   useEffect(() => {
-    localStorageUtil.set(LSKey.SELECTED_NOTE, selectedNote);
-  }, [selectedNote]);
+    if (selectedNoteId) {
+      localStorageUtil.set(LSKey.SELECTED_NOTE, selectedNoteId);
+    }
+  }, [selectedNoteId]);
 
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };
