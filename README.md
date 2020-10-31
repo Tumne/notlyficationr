@@ -15,6 +15,7 @@ This is a basic note taking app built in react typescript. A single user can cre
 
 ```
 git clone https://github.com/Tumne/notlyficationr.git
+cd notlyficationr
 yarn
 yarn start
 ```
