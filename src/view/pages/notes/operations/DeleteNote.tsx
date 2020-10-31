@@ -22,7 +22,6 @@ const DeleteButton = styled(Clickable)<{ isFloated?: boolean }>`
   position: absolute;
   top: 4px;
   right: 15px;
-  z-index: 2;
   `}
 `;
 
