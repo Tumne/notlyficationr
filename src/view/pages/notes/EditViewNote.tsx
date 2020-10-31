@@ -13,7 +13,7 @@ const Paragraph = styled.p`
   margin: 42px 0 0;
 `;
 
-// TODO: refactor edit and add notes into AddModifyNote component
+// TODO: refactor edit and add notes into AddEditNote component
 export const EditViewNote: React.FC<INote> = ({ id, text, title }) => {
   const { dispatch } = useContext(NoteContext);
   const [toggle, setToggle] = useState(false);

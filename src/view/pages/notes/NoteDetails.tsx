@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { NoteContext } from '../../../state/notes/context';
 import { INote } from '../../../state/notes/interfaces';
-import TemplateSrc from '../../assets/templates.png';
+import TemplateSrc from '../../assets/template.png';
 import { Flex } from '../../common';
 import AddNote from './AddNote';
 import { EditViewNote } from './EditViewNote';
