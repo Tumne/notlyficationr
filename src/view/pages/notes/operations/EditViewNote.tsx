@@ -1,9 +1,10 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { TYPE } from '../../../state/notes/constants';
-import { NoteContext } from '../../../state/notes/context';
-import { INote } from '../../../state/notes/interfaces';
-import { Button, Flex, Input, TextArea } from '../../common';
+import { TYPE } from '../../../../state/notes/constants';
+import { NoteContext } from '../../../../state/notes/context';
+import { INote } from '../../../../state/notes/interfaces';
+import { Button, Flex, Input, TextArea } from '../../../common';
+
 import { DeleteNote } from './DeleteNote';
 
 const Paragraph = styled.p`
@@ -13,7 +14,6 @@ const Paragraph = styled.p`
   margin: 42px 0 0;
 `;
 
-// TODO: refactor edit and add notes into AddEditNote component
 export const EditViewNote: React.FC<INote> = ({ id, text, title }) => {
   const { dispatch } = useContext(NoteContext);
   const [toggle, setToggle] = useState(false);

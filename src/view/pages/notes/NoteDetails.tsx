@@ -4,8 +4,8 @@ import { NoteContext } from '../../../state/notes/context';
 import { INote } from '../../../state/notes/interfaces';
 import TemplateSrc from '../../assets/template.png';
 import { Flex } from '../../common';
-import AddNote from './AddNote';
-import { EditViewNote } from './EditViewNote';
+import AddNote from './operations/AddNote';
+import { EditViewNote } from './operations/EditViewNote';
 
 const PlaceholderImg = styled.img`
   position: absolute;

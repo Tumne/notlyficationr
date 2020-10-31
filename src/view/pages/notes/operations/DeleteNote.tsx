@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { TYPE } from '../../../state/notes/constants';
-import { NoteContext } from '../../../state/notes/context';
-import { Clickable } from '../../common';
 import { Trash } from '@styled-icons/ionicons-outline/Trash';
 import styled from 'styled-components';
+import { TYPE } from '../../../../state/notes/constants';
+import { NoteContext } from '../../../../state/notes/context';
+import { Clickable } from '../../../common';
 
 const DeleteIcon = styled(Trash)`
   padding: 0 7px 2px;

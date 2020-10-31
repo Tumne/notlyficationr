@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { TYPE } from '../../../state/notes/constants';
-import { NoteContext } from '../../../state/notes/context';
-import { Button, Flex, Input, TextArea } from '../../common';
-import Form from '../../common/Form';
+import { TYPE } from '../../../../state/notes/constants';
+import { NoteContext } from '../../../../state/notes/context';
+import { Form, Button, Flex, Input, TextArea } from '../../../common';
 
 const AddNote: React.FC<{}> = () => {
   const [newTitle, setNewTitle] = useState('');
