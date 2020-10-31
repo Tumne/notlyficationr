@@ -50,7 +50,7 @@ const reducer = (state: IState, action: IAction): IState => {
     // reset state
     case TYPE.RESET_NOTES:
       resetLocalStorage();
-      return { ...initialState };
+      return initialState;
 
     // change previews of different notes
     case TYPE.SET_SELECTED_NOTE:
