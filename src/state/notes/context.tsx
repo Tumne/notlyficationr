@@ -9,6 +9,9 @@ export const initialState: IState = {
   isNotesOpen: false,
 };
 
+const LSNotes = localStorageUtil.get(LSKey.NOTES);
+const LSSelectedNote = localStorageUtil.get(LSKey.SELECTED_NOTE);
+
 // NoteContext used to manage note state via the useContext hook
 const NoteContext = createContext<IContextProps>({
   state: initialState,
@@ -19,8 +22,6 @@ const { Provider } = NoteContext;
 
 // NoteContext gets and sets localStorage data
 const NoteProvider = ({ children }: INoteProvider) => {
-  const LSNotes = localStorageUtil.get(LSKey.NOTES);
-  const LSSelectedNote = localStorageUtil.get(LSKey.SELECTED_NOTE);
   const [state, dispatch] = useReducer(reducer, {
     ...initialState,
     ...(LSNotes && { notes: LSNotes }),
