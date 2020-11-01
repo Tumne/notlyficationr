@@ -18,7 +18,7 @@ export interface IAction {
   payload?: INote | string | boolean;
 }
 
-export interface IContextProps {
+export interface INoteContext {
   state: IState;
   dispatch: (action: IAction) => void;
 }

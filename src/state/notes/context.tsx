@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useReducer } from 'react';
 import { localStorageUtil, LSKey } from '../utils/localStorageUtil';
-import { IContextProps, INoteProvider, IState } from './interfaces';
+import { INoteContext, INoteProvider, IState } from './interfaces';
 import reducer from './reducer';
 
 export const initialState: IState = {
@@ -13,7 +13,7 @@ const LSNotes = localStorageUtil.get(LSKey.NOTES);
 const LSselectedNoteId = localStorageUtil.get(LSKey.SELECTED_NOTE);
 
 // access state, dispatch via the useContext hook
-const NoteContext = createContext<IContextProps>({
+const NoteContext = createContext<INoteContext>({
   state: initialState,
   dispatch: () => {},
 });

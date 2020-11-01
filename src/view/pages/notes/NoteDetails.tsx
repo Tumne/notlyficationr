@@ -41,9 +41,7 @@ const NotesDetails: React.FC<{}> = () => {
             payload: newNote,
           });
         }}
-        onCancelClose={() =>
-          dispatch({ type: TYPE.SET_ADD_NOTES_CLOSED, payload: false })
-        }
+        onCancelClose={() => dispatch({ type: TYPE.SET_ADD_NOTES_CLOSED })}
       />
     );
   }

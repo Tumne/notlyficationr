@@ -82,7 +82,7 @@ const Header: React.FC<{}> = () => {
           variantColor="#349336"
           disabled={isAddNotesOpen}
           onClick={() => {
-            dispatch({ type: TYPE.SET_ADD_NOTES_OPEN, payload: true });
+            dispatch({ type: TYPE.SET_ADD_NOTES_OPEN });
           }}
         >
           Add Note
