@@ -65,7 +65,8 @@ const reducer = (state: IState, action: IAction): IState => {
       localStorageUtil.remove(LSKey.SELECTED_NOTE);
       return {
         ...state,
-        selectedNoteId: null,
+        selectedNoteId:
+          state.notes.length && !action.payload ? state.notes[0].id : null,
         isNotesOpen: action.payload as boolean,
       };
 

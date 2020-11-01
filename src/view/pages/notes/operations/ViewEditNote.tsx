@@ -45,54 +45,47 @@ export const ViewEditNote: React.FC<INote> = ({ id, text, title }) => {
     }
   };
 
-  return (
+  return toggle ? (
     <div>
-      {toggle ? (
-        <>
-          <div>
-            <Button
-              type="button"
-              variantColor="#349336"
-              width={70}
-              onClick={handleSubmit}
-            >
-              Save
-            </Button>
-            <Button type="button" onClick={handleReset}>
-              Cancel
-            </Button>
-            <DeleteNote id={id} />
-          </div>
-          <Flex>
-            <Input
-              value={newTitle}
-              onChange={(e) => setNewTitle(e.target.value)}
-            />
-            <TextArea
-              value={newText}
-              onChange={(e) => setNewText(e.target.value)}
-            />
-          </Flex>
-        </>
-      ) : (
-        <>
-          <div>
-            <Button
-              variantColor="#377bb5"
-              type="button"
-              width={70}
-              onClick={() => setToggle(true)}
-            >
-              Edit
-            </Button>
-            <DeleteNote id={id} />
-          </div>
-          <div style={{ padding: '0 21px' }}>
-            <h3 style={{ margin: '21px 0' }}>{title}</h3>
-            <Paragraph>{text}</Paragraph>
-          </div>
-        </>
-      )}
+      <div>
+        <Button
+          type="button"
+          variantColor="#349336"
+          width={70}
+          onClick={handleSubmit}
+        >
+          Save
+        </Button>
+        <Button type="button" onClick={handleReset}>
+          Cancel
+        </Button>
+        <DeleteNote id={id} />
+      </div>
+      <Flex>
+        <Input value={newTitle} onChange={(e) => setNewTitle(e.target.value)} />
+        <TextArea
+          value={newText}
+          onChange={(e) => setNewText(e.target.value)}
+        />
+      </Flex>
+    </div>
+  ) : (
+    <div>
+      <div>
+        <Button
+          variantColor="#377bb5"
+          type="button"
+          width={70}
+          onClick={() => setToggle(true)}
+        >
+          Edit
+        </Button>
+        <DeleteNote id={id} />
+      </div>
+      <div style={{ padding: '0 21px' }}>
+        <h3 style={{ margin: '21px 0' }}>{title}</h3>
+        <Paragraph>{text}</Paragraph>
+      </div>
     </div>
   );
 };
