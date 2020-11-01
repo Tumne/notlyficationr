@@ -35,7 +35,7 @@ const ButtonContainer = styled.div`
 
 const Header: React.FC<{}> = () => {
   const {
-    state: { notes, isNotesOpen },
+    state: { notes, isAddNotesOpen },
     dispatch,
   } = useContext(NoteContext);
 
@@ -80,9 +80,9 @@ const Header: React.FC<{}> = () => {
         ) : null}
         <Button
           variantColor="#349336"
-          disabled={isNotesOpen}
+          disabled={isAddNotesOpen}
           onClick={() => {
-            dispatch({ type: TYPE.SET_NOTES_OPEN, payload: true });
+            dispatch({ type: TYPE.SET_ADD_NOTES_OPEN, payload: true });
           }}
         >
           Add Note

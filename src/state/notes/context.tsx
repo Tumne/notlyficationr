@@ -6,13 +6,13 @@ import reducer from './reducer';
 export const initialState: IState = {
   notes: [],
   selectedNoteId: null,
-  isNotesOpen: false,
+  isAddNotesOpen: false,
 };
 
 const LSNotes = localStorageUtil.get(LSKey.NOTES);
 const LSselectedNoteId = localStorageUtil.get(LSKey.SELECTED_NOTE);
 
-// NoteContext used to manage note state via the useContext hook
+// access state, dispatch via the useContext hook
 const NoteContext = createContext<IContextProps>({
   state: initialState,
   dispatch: () => {},
@@ -20,7 +20,7 @@ const NoteContext = createContext<IContextProps>({
 
 const { Provider } = NoteContext;
 
-// NoteContext gets and sets localStorage data
+// initiate reducer and get/set localStorage data into the app
 const NoteProvider = ({ children }: INoteProvider) => {
   const [state, dispatch] = useReducer(reducer, {
     ...initialState,

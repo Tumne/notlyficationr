@@ -17,7 +17,7 @@ const reducer = (state: IState, action: IAction): IState => {
         ...state,
         notes: [addNotePayload, ...state.notes],
         selectedNoteId: addNotePayload.id,
-        isNotesOpen: false,
+        isAddNotesOpen: false,
       };
 
     // updates notes array
@@ -57,17 +57,24 @@ const reducer = (state: IState, action: IAction): IState => {
       const selectedNoteId =
         (state.notes.find((note) => note.id === action.payload) || {}).id ||
         null;
-      return { ...state, selectedNoteId, isNotesOpen: false };
+      return { ...state, selectedNoteId, isAddNotesOpen: false };
 
-    // boolean value to show/hide adding note form
-    // alternatively: accomplish this with useState and prop drilling
-    case TYPE.SET_NOTES_OPEN:
+    // open add note form
+    case TYPE.SET_ADD_NOTES_OPEN:
       localStorageUtil.remove(LSKey.SELECTED_NOTE);
       return {
         ...state,
-        selectedNoteId:
-          state.notes.length && !action.payload ? state.notes[0].id : null,
-        isNotesOpen: action.payload as boolean,
+        selectedNoteId: null,
+        isAddNotesOpen: true,
+      };
+
+    // close add note form
+    case TYPE.SET_ADD_NOTES_CLOSED:
+      localStorageUtil.remove(LSKey.SELECTED_NOTE);
+      return {
+        ...state,
+        selectedNoteId: state.notes.length ? state.notes[0].id : null,
+        isAddNotesOpen: false,
       };
 
     default:

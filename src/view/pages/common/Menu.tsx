@@ -17,7 +17,7 @@ const IconButton = styled(Clickable)`
   cursor: default;
 `;
 
-export const Menu: React.FC<{}> = () => {
+const Menu: React.FC<{}> = () => {
   return (
     <Container>
       <IconButton data-tip data-for="registerTip" data-offset="{'left': 10}">
@@ -33,3 +33,5 @@ export const Menu: React.FC<{}> = () => {
     </Container>
   );
 };
+
+export default Menu;

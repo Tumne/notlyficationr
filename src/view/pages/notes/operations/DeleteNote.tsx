@@ -30,10 +30,7 @@ interface DeleteNoteProps {
   isFloated?: boolean;
 }
 
-export const DeleteNote: React.FC<DeleteNoteProps> = ({
-  id,
-  isFloated = false,
-}) => {
+const DeleteNote: React.FC<DeleteNoteProps> = ({ id, isFloated = false }) => {
   const { dispatch } = useContext(NoteContext);
 
   return (
@@ -49,3 +46,5 @@ export const DeleteNote: React.FC<DeleteNoteProps> = ({
     </DeleteButton>
   );
 };
+
+export default DeleteNote;

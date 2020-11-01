@@ -4,7 +4,7 @@ import { TYPE } from '../../../state/notes/constants';
 import { NoteContext } from '../../../state/notes/context';
 import { Clickable, Stack } from '../../common';
 import ImageSrc from '../../assets/paperairplane.png';
-import { DeleteNote } from './operations/DeleteNote';
+import DeleteNote from './operations/DeleteNote';
 
 const Note = styled.div`
   position: relative;
@@ -39,7 +39,7 @@ const PlaceholderImg = styled.img`
   width: 50%;
 `;
 
-export const NotesList: React.FC<{}> = () => {
+const NotesList: React.FC<{}> = () => {
   const {
     state: { notes, selectedNoteId },
     dispatch,
@@ -67,3 +67,5 @@ export const NotesList: React.FC<{}> = () => {
     </Stack>
   );
 };
+
+export default NotesList;

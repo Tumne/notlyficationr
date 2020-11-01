@@ -10,7 +10,7 @@ export interface INote {
 export interface IState {
   notes: INote[];
   selectedNoteId: string | null;
-  isNotesOpen: boolean;
+  isAddNotesOpen: boolean;
 }
 
 export interface IAction {
